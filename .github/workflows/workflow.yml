@@ -4,7 +4,7 @@ name: Github Pages Deploy
 on:
   push:
     branches:
-      - "master"
+      - "main"
 jobs:
   bulid:
     runs-on: ubuntu-latest
