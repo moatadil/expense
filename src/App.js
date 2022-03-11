@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from 'react'
+import { useState } from 'react'
 import Expenses from './components/Expenses/Expenses'
 import NewExpense from './components/NewExpense/NewExpense'
 const App = () => {
