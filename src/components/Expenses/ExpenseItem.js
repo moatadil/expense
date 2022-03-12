@@ -2,7 +2,6 @@ import React from 'react';
 
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
-import Button from '../UI/Button';
 import './ExpenseItem.css';
 const ExpenseItem = (props) => {
   const deleteHandler = () => {
