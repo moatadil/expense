@@ -5,16 +5,24 @@ import NewExpense from './components/NewExpense/NewExpense'
 const App = () => {
   const [data, setData] = useState([])
   const saveNewData = newData => {
-    // data.push(newData);
-    // console.log(data);
     setData((prevState) => {
       return [newData, ...prevState]
     })
   }
+  const deleteHandler = (id) => {
+    if(data.length > 0){
+      const filterdDataHandler = data.filter(expense => {
+        if (expense.id !== id)
+          return true;
+        return false;
+      })
+      setData(filterdDataHandler)  
+    }
+  }
   return (
     <div className="App">
       <NewExpense saveNewData={saveNewData} />
-      <Expenses data={data} />
+      <Expenses onDelete={deleteHandler} data={data} />
     </div>
   );
 }
