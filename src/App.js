@@ -1,29 +1,19 @@
-import './App.css';
-import { useState } from 'react'
-import Expenses from './components/Expenses/Expenses'
-import NewExpense from './components/NewExpense/NewExpense'
+import React, { useContext } from 'react'
+import './App.css'
+import Login from './components/Login/Login'
+import Home from './components/Home/Home'
+import MainHeader from './components/MainHeader/MainHeader'
+import LoginContext from './components/context/LoginContext'
 const App = () => {
-  const [data, setData] = useState([])
-  const saveNewData = newData => {
-    setData((prevState) => {
-      return [newData, ...prevState]
-    })
-  }
-  const deleteHandler = (id) => {
-    if(data.length > 0){
-      const filterdDataHandler = data.filter(expense => {
-        if (expense.id !== id)
-          return true;
-        return false;
-      })
-      setData(filterdDataHandler)  
-    }
-  }
+  const lctx = useContext(LoginContext)
   return (
-    <div className="App">
-      <NewExpense saveNewData={saveNewData} />
-      <Expenses onDelete={deleteHandler} data={data} />
-    </div>
+    <React.Fragment>
+      <MainHeader />
+      <main>
+        {!lctx.isLoggedIn && <Login  />}
+        {lctx.isLoggedIn && <Home />}
+      </main>
+    </React.Fragment>
   );
 }
 

@@ -13,7 +13,8 @@ const Expenses = (props) => {
   const filterdDataHandler = props.data.filter(expense => {
     if (selectedYear === 'All') 
     return true
-    return expense.date.getFullYear().toString() === selectedYear
+    const date = new Date(expense?.date)
+    return date?.getFullYear().toString() === selectedYear
   })
   const deleteHandler = (id) => {
     props.onDelete(id)
