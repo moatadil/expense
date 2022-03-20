@@ -38,8 +38,6 @@ const Login = (props) => {
     isValid: undefined
   });
   const lctx = useContext(LoginContext)
-  const {isValid : emailIsValid} = emailState
-  const {isValid : passwordIsValid} = passwordState
 
   useEffect(() => {
     const validete = setTimeout (() => {
@@ -54,7 +52,7 @@ const Login = (props) => {
 
       clearTimeout(validete)
     }
-  },[emailIsValid, passwordIsValid])
+  },[emailState.isValid, passwordState.isValid])
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'user_input', val: event.target.value});
